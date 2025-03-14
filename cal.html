@@ -1,0 +1,69 @@
+<html> 
+<head>
+<style>
+input {
+    background-color: #af4c7a; 
+    border: none;
+    color: white;
+    width: 100%;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+}
+</style>
+</head>
+<body> 
+<h3>Simple Calculator</h3> 
+<br/>
+<form name="calc"> 
+<table border=2>
+<tr> 
+    <td colspan=4><input type="text" name="display" id="display"></td> 
+</tr> 
+<tr> 
+    <td><input type="button" value="0" onclick="updateDisplay('0')"></td>
+    <td><input type="button" value="1" onclick="updateDisplay('1')"></td>
+    <td><input type="button" value="2" onclick="updateDisplay('2')"></td>
+    <td><input type="button" value="+" onclick="updateDisplay('+')"></td> 
+</tr>
+<tr>
+    <td><input type="button" value="3" onclick="updateDisplay('3')"></td> 
+    <td><input type="button" value="4" onclick="updateDisplay('4')"></td>
+    <td><input type="button" value="5" onclick="updateDisplay('5')"></td> 
+    <td><input type="button" value="-" onclick="updateDisplay('-')"></td> 
+</tr> 
+<tr> 
+    <td><input type="button" value="6" onclick="updateDisplay('6')"></td> 
+    <td><input type="button" value="7" onclick="updateDisplay('7')"></td> 
+    <td><input type="button" value="8" onclick="updateDisplay('8')"></td> 
+    <td><input type="button" value="x" onclick="updateDisplay('*')"></td> 
+</tr>
+<tr> 
+    <td><input type="button" value="9" onclick="updateDisplay('9')"></td> 
+    <td><input type="button" value="C" onclick="clearDisplay()"></td> 
+    <td><input type="button" value="=" onclick="calculateResult()"></td> 
+    <td><input type="button" value="/" onclick="updateDisplay('/')"></td> 
+</tr> 
+</table>
+</form> 
+<script>
+    function updateDisplay(value) {
+        document.calc.display.value += value;
+    }
+
+    function clearDisplay() {
+        document.calc.display.value = '';
+    }
+
+    function calculateResult() {
+        try {
+            document.calc.display.value = eval(document.calc.display.value.replace('x', '*'));
+        } catch (e) {
+            document.calc.display.value = 'Error';
+        }
+    }
+</script>
+</body>
+</html>
